@@ -15,6 +15,9 @@ const NotePage = () => {
         getNote(note)
     },[id])
 
+
+
+        // this route is for getting all the notes
     let getNote = async () =>{
         let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}`)
         let data = await response.json()
@@ -23,7 +26,7 @@ const NotePage = () => {
        
     }
 
-    
+            // this function handels update functionality    
     let updateNote = async () =>{
         let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/update` ,{
             method: 'PUT',
@@ -34,8 +37,20 @@ const NotePage = () => {
         })
     }
 
-    
-        let handleSubmit = () =>{
+                   // this function handels delete functionality    
+
+    let deleteNote = async ()=>{
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/delete`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        navigate('/')
+    }
+
+               // this function handels submit functionality    
+    let handleSubmit = () =>{
             updateNote()
             navigate('/')
         }
@@ -46,8 +61,8 @@ const NotePage = () => {
         <div className="note-header">
             <h3>   
                 <ArrowLeft onClick={handleSubmit} />
-               
             </h3>
+            <button  onClick={deleteNote}>Delete</button>
            
         </div>
         <textarea onChange={(e) => {setNote({...note,'body':e.target.value})}} defaultValue={note?note.body:""}></textarea>
