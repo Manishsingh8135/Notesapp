@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ListItem from '../components/ListItem'
+import AddButton from '../components/AddButton'
 
 
 const NotesListPage = () => {
@@ -32,7 +33,7 @@ const NotesListPage = () => {
             <div className="notes-list">
                 {allnotes(notes)}
             </div>
-
+            <AddButton/>
         </div>
     )
 }
