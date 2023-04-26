@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-06iocgica#^fse)*zsxvib+a)(#%7@jfp1xh$sec$fzox1$9*c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -62,7 +62,9 @@ ROOT_URLCONF = "notesapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / 'frontend/note-app/dist'
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -117,11 +119,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/assets/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/note-app/dist/assets'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 CORS_ALLOW_ALL_ORIGINS = True
