@@ -21,7 +21,7 @@ const NotePage = () => {
     let getNote = async () =>{
 
         if (id==='new') return
-        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}`)
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/`)
         let data = await response.json()
         
         setNote(data)
@@ -30,7 +30,7 @@ const NotePage = () => {
 
             // this function handels update functionality    
         let createNote = async () =>{
-            let response = await fetch(`http://127.0.0.1:8000/api/notes/create` ,{
+            let response = await fetch(`http://127.0.0.1:8000/api/notes/create/` ,{
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'
@@ -45,7 +45,7 @@ const NotePage = () => {
 
             // this function handels update functionality    
     let updateNote = async () =>{
-        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/update` ,{
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/update/` ,{
             method: 'PUT',
             headers: {
                 'Content-Type':'application/json'
@@ -57,7 +57,7 @@ const NotePage = () => {
                    // this function handels delete functionality    
 
     let deleteNote = async ()=>{
-        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/delete`,{
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${id}/delete/`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'
